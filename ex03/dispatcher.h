@@ -11,21 +11,23 @@ typedef pair<triangle, pair<circle, pair<rectangle> > > hierarchy;
 
 template<class T>
 class IDispatcher {
+public:
   virtual void dispatch(T &s) = 0;
 };
 
-template <class V, class N>
-class dispatcher<pair<V, N> > : public IDispatcher<V>, public dispatcher<N> {
-public:
-};
+template<typename V> class _dispatcher {};
 
-template <class V>
-class dispatcher : public IDispatcher<V>, public dispatcher<N> {
-public:
-};
+template <typename V, class N>
+class _dispatcher<pair<V, N> > : public IDispatcher<V>, public _dispatcher<N>
+{};
 
-template <class T>
-class dispatcher<null_type> {}
+
+template <>
+class _dispatcher<null_type>
+{};
+
+class dispatcher : public _dispatcher<hierarchy>
+{};
 
 class print : public dispatcher {
 public:
@@ -34,7 +36,7 @@ public:
     void dispatch(rectangle &s);
 };
 
-class area : public dispatcher {
+class area : public dispatcher  {
 public:
     float value;
     area() : value(0.0f) {}
@@ -43,7 +45,7 @@ public:
     void dispatch(rectangle &s);
 };
 
-class diameter : public dispatcher {
+class diameter : public dispatcher  {
 public:
     float value;
     diameter() : value(0.0f) {}
@@ -52,7 +54,7 @@ public:
     void dispatch(rectangle &s);
 };
 
-class perimeter : public dispatcher {
+class perimeter : public dispatcher  {
 public:
     float value;
     perimeter() : value(0.0f) {}

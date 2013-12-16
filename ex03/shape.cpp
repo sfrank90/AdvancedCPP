@@ -3,7 +3,7 @@
 
 
 void triangle::visit(dispatcher& D) {
-    D.dispatch(*this);
+    D.dispatch((triangle&)*this);
 }
 void circle::visit(dispatcher& D) {
     D.dispatch(*this);

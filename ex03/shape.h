@@ -7,10 +7,8 @@
 
 class shape {
 private:
-  //std::string mName;
 public:
   virtual void visit(dispatcher& D) = 0;
-  //virtual std::string getName() { return mName; }
 };
 
 
