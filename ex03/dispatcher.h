@@ -6,8 +6,9 @@
 class triangle;
 class circle;
 class rectangle;
+class square;
 
-typedef pair<triangle, pair<circle, pair<rectangle> > > hierarchy;
+typedef pair<triangle, pair<circle, pair<rectangle, pair<square> > > > hierarchy;
 
 template<class T>
 class IDispatcher {
@@ -21,7 +22,7 @@ template <typename V, class N>
 class _dispatcher<pair<V, N> > : public _dispatcher<N>,  public IDispatcher<V>
 {
 public:
-	using _dispatcher<N>::dispatch;
+	using _dispatcher<N>::dispatch;    //dunno...
 	using IDispatcher<V>::dispatch;    //with snippet
 	//virtual void dispatch(V &s) = 0; //without snippet
 };
@@ -47,6 +48,7 @@ public:
     void dispatch(triangle &s);
     void dispatch(circle &s);
     void dispatch(rectangle &s);
+    void dispatch(square &s);
 };
 
 class area : public dispatcher  {
@@ -56,6 +58,7 @@ public:
     void dispatch(triangle &s);
     void dispatch(circle &s);
     void dispatch(rectangle &s);
+    void dispatch(square &s);
 };
 
 class diameter : public dispatcher  {
@@ -65,6 +68,7 @@ public:
     void dispatch(triangle &s);
     void dispatch(circle &s);
     void dispatch(rectangle &s);
+    void dispatch(square &s);
 };
 
 class perimeter : public dispatcher  {
@@ -74,6 +78,7 @@ public:
     void dispatch(triangle &s);
     void dispatch(circle &s);
     void dispatch(rectangle &s);
+    void dispatch(square &s);
 };
 #endif
 

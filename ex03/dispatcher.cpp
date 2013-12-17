@@ -15,7 +15,9 @@ void print::dispatch(circle &s) {
 void print::dispatch(rectangle &s) {
         std::cout << "Rectangle" << std::endl;
 }
-
+void print::dispatch(square &s) {
+        std::cout << "Square" << std::endl;
+}
 // Area
 void area::dispatch(triangle &s) {
   float h = (s.a+s.b+s.c) / 2.0f;
@@ -26,6 +28,9 @@ void area::dispatch(circle &s) {
 }
 void area::dispatch(rectangle &s) {
   value = s.a*s.b;
+}
+void area::dispatch(square &s) {
+  value = s.a*s.a;
 }
 
 // Diameter
@@ -40,6 +45,9 @@ void diameter::dispatch(circle &s) {
 void diameter::dispatch(rectangle &s) {
   value = sqrt(s.a*s.a + s.b*s.b);
 }
+void diameter::dispatch(square &s) {
+  value = sqrt(s.a*s.a*2.0f);
+}
 
 // Perimeter
 void perimeter::dispatch(triangle &s) {
@@ -50,5 +58,9 @@ void perimeter::dispatch(circle &s) {
 }
 void perimeter::dispatch(rectangle &s) {
   value = 2.0f*(s.a+s.b);
+}
+
+void perimeter::dispatch(square &s) {
+  value = 4.0f*(s.a);
 }
 

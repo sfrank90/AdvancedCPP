@@ -35,5 +35,13 @@ public:
   rectangle(float _a, float _b) : a(_a), b(_b) {}
   void visit(dispatcher& D);
 };
+
+class square : public shape {
+public:
+  float a;
+
+  square(float _a) : a(_a) {}
+  void visit(dispatcher& D);
+};
 #endif
 
