@@ -18,9 +18,22 @@ public:
 template<typename V> class _dispatcher {};
 
 template <typename V, class N>
-class _dispatcher<pair<V, N> > : public IDispatcher<V>, public _dispatcher<N>
-{};
+class _dispatcher<pair<V, N> > : public _dispatcher<N>,  public IDispatcher<V>
+{
+public:
+	using _dispatcher<N>::dispatch;
+	using IDispatcher<V>::dispatch;    //with snippet
+	//virtual void dispatch(V &s) = 0; //without snippet
+};
 
+
+template <typename V>
+class _dispatcher<pair<V,null_type> > : public IDispatcher<V>
+{
+public:
+	using IDispatcher<V>::dispatch;    //with snippet
+	//virtual void dispatch(V &s) = 0; //without snippet
+};
 
 template <>
 class _dispatcher<null_type>
