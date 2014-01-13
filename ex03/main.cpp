@@ -51,5 +51,7 @@ int main() {
   r->visit(pe);
   std::cout << "Perimeter "; r->visit(p); std::cout << ": " << pe.value << std::endl;
 
+  std::cin.get();
+
   return 0;
 }

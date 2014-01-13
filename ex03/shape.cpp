@@ -12,4 +12,7 @@ void rectangle::visit(dispatcher& D) {
     D.dispatch(*this);
 }
 
+void square::visit(dispatcher& D) {
+    D.dispatch(*this);
+}
 

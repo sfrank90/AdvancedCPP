@@ -7,10 +7,8 @@
 
 class shape {
 private:
-  //std::string mName;
 public:
   virtual void visit(dispatcher& D) = 0;
-  //virtual std::string getName() { return mName; }
 };
 
 
@@ -35,6 +33,14 @@ public:
   float a,b;
 
   rectangle(float _a, float _b) : a(_a), b(_b) {}
+  void visit(dispatcher& D);
+};
+
+class square : public shape {
+public:
+  float a;
+
+  square(float _a) : a(_a) {}
   void visit(dispatcher& D);
 };
 #endif
